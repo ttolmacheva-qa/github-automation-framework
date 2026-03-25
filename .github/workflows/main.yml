@@ -1,0 +1,20 @@
+name: Run Tests
+on: [push]
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Set up Python
+              uses: actions/setup-python@v4
+              with:
+                  python-version: '3.9'
+            - name: Install dependencies
+              run: |
+                  pip install -r requirements.txt
+                  playwright install --with-deps
+            - name: Run tests
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN_SECRET }}
+                  GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+              run: pytest --headed=false # В облаке без экрана
