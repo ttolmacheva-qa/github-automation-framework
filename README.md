@@ -32,16 +32,25 @@
 ## 📂 Структура проекта
 ```text
 github-automation-framework/
+├── .github/
+│   └── workflows/
+│       └── ci.yml                # CI/CD пайплайн (GitHub Actions)
 ├── api/
-│   └── github_client.py     # Клиент для работы с GitHub REST API
+│   └── github_client.py         # Клиент для работы с GitHub REST API
 ├── pages/
-│   └── repo_page.py         # Page Objects (Локаторы и действия в UI)
+│   ├── base_page.py             # Базовый Page Object (общие методы)
+│   ├── login_page.py            # Страница авторизации GitHub
+│   ├── profile_page.py          # Страница профиля пользователя
+│   └── repo_page.py             # Страница репозитория
 ├── tests/
-│   ├── conftest.py          # Глобальные фикстуры и настройки среды
-│   └── test_ui_repos.py     # E2E и UI сценарии
-├── .env                     # Секреты (не пушится в репо!)
-├── pytest.ini               # Конфигурация запуска Pytest
-└── requirements.txt         # Зависимости проекта
+│   ├── conftest.py              # Глобальные фикстуры и настройки среды
+│   ├── test_repo_crud.py        # E2E: CRUD-операции с репозиториями
+│   └── test_profile.py          # UI: проверки профиля пользователя
+├── .env                         # Секреты (не пушится в репо!)
+├── .gitignore
+├── pytest.ini                   # Конфигурация запуска Pytest
+├── requirements.txt             # Зависимости проекта
+└── README.md
 ```
 
 ---
