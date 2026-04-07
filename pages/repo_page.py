@@ -1,6 +1,8 @@
-from playwright.sync_api import Page, expect
+from pages.base_page import BasePage
 
-class RepoPage:
+
+class RepoPage(BasePage):
+    """Page Object для страницы репозитория."""
     def __init__(self, page: Page):
         self.page = page
         self.issues_tab = page.get_by_role("link", name="Issues")
